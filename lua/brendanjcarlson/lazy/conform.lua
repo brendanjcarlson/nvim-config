@@ -26,10 +26,14 @@ return {
 
 		local formatters = {}
 		local seen = {}
-		for _, name in ipairs(vim.tbl_flatten(vim.tbl_values(formatters_by_ft))) do
-			if type(name) == "string" and not seen[name] then
-				table.insert(formatters, name)
-				seen[name] = true
+		for _, list in pairs(formatters_by_ft) do
+			if type(list) == "table" then
+				for _, name in ipairs(list) do
+					if type(name) == "string" and not seen[name] then
+						table.insert(formatters, name)
+						seen[name] = true
+					end
+				end
 			end
 		end
 

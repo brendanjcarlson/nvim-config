@@ -1,6 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
+		"folke/lazydev.nvim",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"saghen/blink.cmp",
@@ -13,9 +14,6 @@ return {
 					Lua = {
 						diagnostics = {
 							globals = { "vim" },
-						},
-						workspace = {
-							library = vim.api.nvim_get_runtime_file("lua", true),
 						},
 					},
 				},
@@ -32,16 +30,14 @@ return {
 	},
 
 	config = function(_, opts)
+		require("lazydev").setup({})
 		require("mason").setup({})
 		require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(opts.servers) })
 
+		local lspconfig = require("lspconfig")
 		for server, config in pairs(opts.servers) do
-			require("lspconfig")[server].setup(vim.tbl_deep_extend(
-				"force",
-				config,
-				{ capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities) }
-			))
+			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+			lspconfig[server].setup(config)
 		end
-
 	end,
 }
