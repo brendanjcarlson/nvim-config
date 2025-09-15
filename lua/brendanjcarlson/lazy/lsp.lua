@@ -1,14 +1,25 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"saghen/blink.cmp",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"saghen/blink.cmp",
 	},
 
 	opts = {
 		servers = {
-			lua_ls = {},
+			lua_ls = {
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+						workspace = {
+							library = vim.api.nvim_get_runtime_file("lua", true),
+						},
+					},
+				},
+			},
 			clangd = {},
 			rust_analyzer = {},
 			html = {},
@@ -16,30 +27,21 @@ return {
 			cssls = {},
 			gopls = {},
 			templ = {},
-			ts_ls = {},
+			vtsls = {},
 		},
 	},
 
 	config = function(_, opts)
 		require("mason").setup({})
-		require("mason-lspconfig").setup({
-			ensure_installed = {
-				"lua_ls",
-				"clangd",
-				"rust_analyzer",
-				"html",
-				"htmx",
-				"cssls",
-				"gopls",
-				"templ",
-				"ts_ls",
-			},
-		})
+		require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(opts.servers) })
 
-		local lspconfig = require("lspconfig")
 		for server, config in pairs(opts.servers) do
-			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-			lspconfig[server].setup(config)
+			require("lspconfig")[server].setup(vim.tbl_deep_extend(
+				"force",
+				config,
+				{ capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities) }
+			))
 		end
+
 	end,
 }
