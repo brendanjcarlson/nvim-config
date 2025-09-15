@@ -23,13 +23,16 @@ return {
 	config = function(_, opts)
 		require("lazydev").setup({})
 		require("mason").setup({})
-		require("mason-lspconfig").setup({ ensure_installed = vim.tbl_keys(opts.servers) })
-
-		local lspconfig = require("lspconfig")
-		for server, config in pairs(opts.servers) do
-			config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-			lspconfig[server].setup(config)
-		end
+		require("mason-lspconfig").setup({
+			ensure_installed = vim.tbl_keys(opts.servers),
+			handlers = {
+				function(server_name)
+					local server_opts = opts.servers[server_name] or {}
+					server_opts.capabilities = require("blink.cmp").get_lsp_capabilities(server_opts.capabilities)
+					require("lspconfig")[server_name].setup(server_opts)
+				end,
+			},
+		})
 
 		vim.diagnostic.config({
 			float = {
