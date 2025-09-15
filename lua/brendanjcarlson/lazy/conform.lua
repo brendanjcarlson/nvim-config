@@ -17,7 +17,7 @@ return {
 			html = { "prettierd", "prettier", stop_after_first = true },
 			css = { "prettierd", "prettier", stop_after_first = true },
 			go = { "goimports", "gofmt" },
-			templ = { "templ", "goimports", "gofmt" },
+			templ = { "templ" },
 			javascript = { "prettierd", "prettier", stop_after_first = true },
 			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
