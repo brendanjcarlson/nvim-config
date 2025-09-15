@@ -1,4 +1,5 @@
 require("brendanjcarlson.set")
 require("brendanjcarlson.remap")
 require("brendanjcarlson.ft")
+require("brendanjcarlson.autocmd")
 require("brendanjcarlson.lazy_init")
