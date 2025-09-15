@@ -9,10 +9,14 @@ return {
 	opts = {
 		servers = {
 			lua_ls = {},
+			clangd = {},
+			rust_analyzer = {},
+			html = {},
+			htmx = {},
+			cssls = {},
 			gopls = {},
 			templ = {},
-			htmx = {},
-			html = {},
+			ts_ls = {},
 		},
 	},
 
@@ -21,12 +25,14 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
-				"rust_analyzer",
-				"gopls",
 				"clangd",
-				"templ",
-				"htmx",
+				"rust_analyzer",
 				"html",
+				"htmx",
+				"cssls",
+				"gopls",
+				"templ",
+				"ts_ls",
 			},
 		})
 
