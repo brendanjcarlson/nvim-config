@@ -16,7 +16,8 @@ return {
 			cssls = {},
 			gopls = {},
 			templ = {},
-			vtsls = {},
+			ts_ls = {},
+			jq = {},
 		},
 	},
 
