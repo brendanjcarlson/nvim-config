@@ -1,12 +1,12 @@
 return {
 	"folke/trouble.nvim",
-	opts = {},
+	opts = {
+		auto_close = true,
+	},
 	cmd = "Trouble",
 	keys = {
-		{
-			"<leader>tt",
-			"<cmd>Trouble diagnostics toggle<CR>",
-			desc = "Diagnostics (Trouble)",
-		},
+		{ "<leader>tt", "<cmd>Trouble diagnostics toggle<cr>" },
+		{ "[t", "<cmd>Trouble diagnostics next<cr>" },
+		{ "]t", "<cmd>Trouble diagnostics prev<cr>" },
 	},
 }
