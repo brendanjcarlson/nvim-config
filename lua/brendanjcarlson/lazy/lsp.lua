@@ -17,7 +17,6 @@ return {
 			gopls = {},
 			templ = {},
 			ts_ls = {},
-			jq = {},
 		},
 	},
 
