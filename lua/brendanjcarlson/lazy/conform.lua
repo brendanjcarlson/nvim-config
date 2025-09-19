@@ -22,7 +22,6 @@ return {
 			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
 			typescript = { "prettierd", "prettier", stop_after_first = true },
 			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-			json = { "jq" },
 		}
 
 		local formatters = {}
