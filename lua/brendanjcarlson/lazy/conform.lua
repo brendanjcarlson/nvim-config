@@ -14,14 +14,14 @@ return {
 		local formatters_by_ft = {
 			lua = { "stylua" },
 			c = { "clang-format" },
-			html = { "prettierd", "prettier", stop_after_first = true },
+			html = { "rustywind", "prettierd", "prettier" },
 			css = { "prettierd", "prettier", stop_after_first = true },
 			go = { "goimports", "gofmt" },
-			templ = { "templ" },
-			javascript = { "prettierd", "prettier", stop_after_first = true },
-			javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-			typescript = { "prettierd", "prettier", stop_after_first = true },
-			typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+			templ = { "rustywind", "templ" },
+			javascript = { "rustywind", "prettierd" },
+			javascriptreact = { "rustywind", "prettierd" },
+			typescript = { "rustywind", "prettierd" },
+			typescriptreact = { "rustywind", "prettierd" },
 		}
 
 		local formatters = {}
