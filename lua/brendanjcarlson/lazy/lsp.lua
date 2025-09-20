@@ -17,6 +17,7 @@ return {
 			gopls = {},
 			templ = {},
 			ts_ls = {},
+			yamlls = {},
 		},
 	},
 
