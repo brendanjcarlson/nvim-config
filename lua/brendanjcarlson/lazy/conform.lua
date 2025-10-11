@@ -16,7 +16,7 @@ return {
 			c = { "clang-format" },
 			html = { "rustywind", "prettierd", "prettier" },
 			css = { "prettierd", "prettier", stop_after_first = true },
-			go = { "goimports", "gofmt" },
+			go = { "goimports", "gofumpt" },
 			templ = { "rustywind", "templ" },
 			javascript = { "rustywind", "prettierd" },
 			javascriptreact = { "rustywind", "prettierd" },
