@@ -17,6 +17,7 @@ return {
 			gopls = {},
 			templ = {},
 			ts_ls = {},
+			svelte = {},
 			yamlls = {},
 		},
 	},
@@ -60,6 +61,9 @@ return {
 				end, o)
 				vim.keymap.set("n", "<leader>rn", function()
 					vim.lsp.buf.rename()
+				end, o)
+				vim.keymap.set("n", "<leader>gr", function()
+					vim.lsp.buf.references()
 				end, o)
 			end,
 		})
