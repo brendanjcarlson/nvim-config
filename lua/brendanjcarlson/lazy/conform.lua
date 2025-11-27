@@ -13,7 +13,6 @@ return {
 
 		local formatters_by_ft = {
 			lua = { "stylua" },
-			c = { "clang-format" },
 			html = { "rustywind", "prettierd", "prettier" },
 			css = { "prettierd", "prettier", stop_after_first = true },
 			go = { "goimports", "gofumpt" },
@@ -22,6 +21,8 @@ return {
 			javascriptreact = { "rustywind", "prettierd" },
 			typescript = { "rustywind", "prettierd" },
 			typescriptreact = { "rustywind", "prettierd" },
+			rust = { "rustfmt", lsp_format = "fallback" },
+			json = { "prettierd", "prettier", stop_after_first = true },
 		}
 
 		local formatters = {}
@@ -38,7 +39,7 @@ return {
 		end
 
 		for _, name in ipairs(formatters) do
-			if not installed[name] and registry.has_package(name) then
+			if not installed[name] and registry.has_package(name) and name ~= "rustfmt" then
 				vim.cmd(":MasonInstall " .. name)
 			end
 		end
