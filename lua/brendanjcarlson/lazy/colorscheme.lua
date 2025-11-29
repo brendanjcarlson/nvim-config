@@ -1,4 +1,4 @@
-return {}
+-- return {}
 
 -- return {
 -- 	"folke/tokyonight.nvim",
@@ -7,12 +7,12 @@ return {}
 -- 	opts = {},
 -- }
 
--- return {
--- 	"navarasu/onedark.nvim",
--- 	priority = 1000,
--- 	config = function()
--- 		local onedark = require("onedark")
--- 		onedark.setup({ style = "darker" })
--- 		onedark.load()
--- 	end,
--- }
+return {
+	"navarasu/onedark.nvim",
+	priority = 1000,
+	config = function()
+		local onedark = require("onedark")
+		onedark.setup({ style = "darker" })
+		onedark.load()
+	end,
+}
